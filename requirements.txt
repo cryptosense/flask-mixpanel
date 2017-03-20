@@ -1,0 +1,3 @@
+Flask
+mixpanel
+mixpanel-py-async

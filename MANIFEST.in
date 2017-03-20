@@ -1,0 +1,6 @@
+include *.rst
+include *.txt
+include .coveragerc
+include .isort.cfg
+include LICENSE
+recursive-include tests *.py

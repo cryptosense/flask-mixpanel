@@ -1,0 +1,9 @@
+*.egg-info
+*.pyc
+.coverage
+MANIFEST
+_build
+build
+cover
+dist
+venv

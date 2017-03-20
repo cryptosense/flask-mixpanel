@@ -1,0 +1,10 @@
+[run]
+branch = true
+source = streamcat
+
+[report]
+exclude_lines =
+    if __name__ == '__main__':
+omit =
+    app/tests/*
+show_missing = true
