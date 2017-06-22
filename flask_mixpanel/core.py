@@ -16,9 +16,9 @@ def get_random_id():
     return str(uuid.uuid4())
 
 
-def get_instance():
+def get_instance(use_session_distinct_id=True):
     token = current_app.config.get('MIXPANEL_TOKEN')
-    if token is None or 'distinct_id' not in session:
+    if token is None or (use_session_distinct_id and 'distinct_id' not in session):
         return
     return Mixpanel(token, consumer=AsyncBufferedConsumer())
 
@@ -38,8 +38,8 @@ def alias(alias_id, meta=None):
     return mp.alias(alias_id, session['distinct_id'], meta)
 
 
-def track(event_name, properties=None, meta=None):
-    mp = get_instance()
+def track(event_name, properties=None, meta=None, distinct_id=None):
+    mp = get_instance(use_session_distinct_id=distinct_id is None)
     if mp is None:
         return
     user_agent = request.headers.get('User-Agent')
@@ -56,8 +56,10 @@ def track(event_name, properties=None, meta=None):
     })
     if app_id is not None:
         event_name = '{}: {}'.format(app_id, event_name)
+    if distinct_id is None:
+        distinct_id = session['distinct_id']
 
-    return mp.track(session['distinct_id'], event_name, properties, meta)
+    return mp.track(distinct_id, event_name, properties, meta)
 
 
 def people_append(properties, meta=None):
