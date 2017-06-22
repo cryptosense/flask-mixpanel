@@ -39,7 +39,6 @@ def alias(alias_id, meta=None):
 
 
 def track(event_name, properties=None, meta=None):
-    print("Mixpanel event: {}".format(event_name))
     mp = get_instance()
     if mp is None:
         return
