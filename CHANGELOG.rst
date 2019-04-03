@@ -2,7 +2,7 @@
 Change Log
 ==========
 
-`Unreleased`_ (2019-04-03)
+`Unreleased`_
 --------------------------
 
 * Add option to override the distinct ID
