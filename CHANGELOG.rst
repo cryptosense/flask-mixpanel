@@ -3,7 +3,10 @@ Change Log
 ==========
 
 `Unreleased`_
--------------
+--------------------------
+
+* Add option to override the distinct ID
+
 
 `0.1.1`_ (2017-06-22)
 ---------------------
